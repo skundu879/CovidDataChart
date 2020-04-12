@@ -1,0 +1,43 @@
+body {
+    background-color: antiquewhite;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.image {
+    width: 550px;
+    height: 150px;
+    margin-top: 25px;
+}
+
+.footer {
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: lightslategray;
+    color: white;
+    text-align: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (max-width:770px) {
+    .container {
+        margin: 0 10%;
+    }
+    .image {
+        width: 100%;
+    }
+    .footer {
+        width: 100%
+    }
+}
