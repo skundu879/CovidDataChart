@@ -14,7 +14,7 @@ useEffect(()=>{
     fetchCountries();
 },[setfetchedCountries]);
 
-console.log(fetchedCountries);
+//console.log(fetchedCountries);
 
     return(
         <div>
