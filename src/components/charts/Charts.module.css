@@ -9,3 +9,10 @@
         width: 100%;
     }
 }
+
+.alart {
+    width: auto;
+    height: 10%;
+    margin-top: 80px;
+    color: rgb(0, 0, 0) !important;
+}

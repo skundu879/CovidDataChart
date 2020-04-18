@@ -1,39 +1,41 @@
-import React,{useState,useEffect} from 'react';
-import {Select, FormControl} from '@material-ui/core';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import {countries} from '../../Api'
-import styles from './CountryPicker.module.css';
-const CountryPicker = ({handelCountrychange})=>{
-const[fetchedCountries, setfetchedCountries]= useState([]);
+import React, { useState, useEffect } from "react";
+import { Select, FormControl } from "@material-ui/core";
+import InputLabel from "@material-ui/core/InputLabel";
+//import MenuItem from "@material-ui/core/MenuItem";
+import { countries } from "../../Api";
+import styles from "./CountryPicker.module.css";
 
-useEffect(()=>{
-    const fetchCountries = async ()=>{
-        setfetchedCountries(await countries());
-    }
+const CountryPicker = ({ handelCountrychange, country }) => {
+  const [fetchedCountries, setfetchedCountries] = useState([]);
+  useEffect(() => {
+    const fetchCountries = async () => {
+      setfetchedCountries(await countries());
+    };
     fetchCountries();
-},[setfetchedCountries]);
-
-//console.log(fetchedCountries);
-
-    return(
-        <div>
-        <FormControl variant="filled" className={styles.fromControl}>
+  }, [setfetchedCountries]);
+  return (
+    <div>
+      <FormControl variant="filled" className={styles.fromControl}>
         <InputLabel id="demo-simple-select-filled-label">Country</InputLabel>
         <Select
+          native
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
-          defaultValue="Global"
-          onChange={(e)=>handelCountrychange(e.target.value)}
+          value={country}
+          onChange={(e) => handelCountrychange(e.target.value)}
         >
-          <MenuItem value="Global">
-            <em>Global</em>
-          </MenuItem>
-          {fetchedCountries.map((country,i)=><MenuItem key={i} value={country}>{country}</MenuItem>)}
+          <option value="Global">
+            Global
+          </option>
+          {fetchedCountries.map((country, i) => (
+            <option key={i} value={country}>
+              {country}
+            </option>
+          ))}
         </Select>
-        </FormControl>
-        </div>
-    )
-}
+      </FormControl>
+    </div>
+  );
+};
 
 export default CountryPicker;
